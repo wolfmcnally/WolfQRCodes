@@ -1,0 +1,232 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ExtensibleEnumeratedName",
+        "repositoryURL": "https://github.com/wolfmcnally/ExtensibleEnumeratedName",
+        "state": {
+          "branch": null,
+          "revision": "76394ea0652f809d19c7edc22614e2e638f82394",
+          "version": "2.0.2"
+        }
+      },
+      {
+        "package": "swift-nio",
+        "repositoryURL": "https://github.com/apple/swift-nio.git",
+        "state": {
+          "branch": null,
+          "revision": "4409b57d4c0c40d41ac2b320fccf02e4d451e3db",
+          "version": "2.13.0"
+        }
+      },
+      {
+        "package": "swift-nio-transport-services",
+        "repositoryURL": "https://github.com/apple/swift-nio-transport-services.git",
+        "state": {
+          "branch": null,
+          "revision": "c7f06384dc5ce7e8506de5ed9b59e35b4d88c64b",
+          "version": "1.3.0"
+        }
+      },
+      {
+        "package": "WolfAnimation",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfAnimation",
+        "state": {
+          "branch": null,
+          "revision": "6d0f6f4dbe79b0a56240effe9760c67d36bbf470",
+          "version": "3.0.8"
+        }
+      },
+      {
+        "package": "WolfApp",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfApp",
+        "state": {
+          "branch": null,
+          "revision": "160bbd6f204e4f0ee087e79922ec3c64b9f4a525",
+          "version": "2.2.1"
+        }
+      },
+      {
+        "package": "WolfAutolayout",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfAutolayout",
+        "state": {
+          "branch": null,
+          "revision": "309857c25a03f873788243752c7c13b1ee3d61b6",
+          "version": "2.1.5"
+        }
+      },
+      {
+        "package": "WolfCache",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfCache",
+        "state": {
+          "branch": null,
+          "revision": "8258ab97bccfb9e90c199a848229bbf365d52432",
+          "version": "4.0.3"
+        }
+      },
+      {
+        "package": "WolfColor",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfColor",
+        "state": {
+          "branch": null,
+          "revision": "c2d7b6fe3f400a95536da14b5c70cd0beae2c42e",
+          "version": "4.0.10"
+        }
+      },
+      {
+        "package": "WolfConcurrency",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfConcurrency",
+        "state": {
+          "branch": null,
+          "revision": "2db99c1fdf6e2bda2a8570cc19c5291dfe6cce88",
+          "version": "3.0.9"
+        }
+      },
+      {
+        "package": "WolfFoundation",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfFoundation",
+        "state": {
+          "branch": null,
+          "revision": "8370e79858c238b584600374bd13484414796c72",
+          "version": "5.0.1"
+        }
+      },
+      {
+        "package": "WolfGeometry",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfGeometry",
+        "state": {
+          "branch": null,
+          "revision": "86eeb01ad751770fc39793311fa195db01f07b02",
+          "version": "4.0.7"
+        }
+      },
+      {
+        "package": "WolfImage",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfImage",
+        "state": {
+          "branch": null,
+          "revision": "5901bf3f28b847d4fff03a6f37ac505144997bcb",
+          "version": "4.0.7"
+        }
+      },
+      {
+        "package": "WolfLocale",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfLocale",
+        "state": {
+          "branch": null,
+          "revision": "ae446ef212453f33223ce5d6d6d3d7c0dd43b950",
+          "version": "2.0.3"
+        }
+      },
+      {
+        "package": "WolfLog",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfLog",
+        "state": {
+          "branch": null,
+          "revision": "969cd20be09bef49b168e75b842c0ae157f1d7d7",
+          "version": "2.0.4"
+        }
+      },
+      {
+        "package": "WolfNesting",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfNesting",
+        "state": {
+          "branch": null,
+          "revision": "b52f321c45e9bb13234ceb315b051de9cf2482a8",
+          "version": "2.0.4"
+        }
+      },
+      {
+        "package": "WolfNetwork",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfNetwork",
+        "state": {
+          "branch": null,
+          "revision": "6abf242eeed5773f2c5700e7341a7c007fbeae52",
+          "version": "5.1.1"
+        }
+      },
+      {
+        "package": "WolfNIO",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfNIO",
+        "state": {
+          "branch": null,
+          "revision": "7f421e47f3eec0570d30b5c2a4a56445463cb907",
+          "version": "1.0.4"
+        }
+      },
+      {
+        "package": "WolfNumerics",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfNumerics",
+        "state": {
+          "branch": null,
+          "revision": "40ecf0a68c642dcbe3db4eb8e2c5785da551175e",
+          "version": "4.0.4"
+        }
+      },
+      {
+        "package": "WolfOSBridge",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfOSBridge",
+        "state": {
+          "branch": null,
+          "revision": "b51f5fd34352ff8e4594301d9c0479a9e2e99ce4",
+          "version": "2.0.3"
+        }
+      },
+      {
+        "package": "WolfPipe",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfPipe",
+        "state": {
+          "branch": null,
+          "revision": "c3431ea757cd45972805eddd5fbcb762e465b894",
+          "version": "2.0.2"
+        }
+      },
+      {
+        "package": "WolfPubSub",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfPubSub",
+        "state": {
+          "branch": null,
+          "revision": "f2b5b729e18e9a4106a6087cdf360ec3688b5e7e",
+          "version": "2.0.3"
+        }
+      },
+      {
+        "package": "WolfSec",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfSec",
+        "state": {
+          "branch": null,
+          "revision": "be664360dfbea3398bf70af8ffa80d7db3940233",
+          "version": "3.0.5"
+        }
+      },
+      {
+        "package": "WolfStrings",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfStrings",
+        "state": {
+          "branch": null,
+          "revision": "3f1831535ce6261d682ca1ae0d4b2f73bf38df44",
+          "version": "2.2.1"
+        }
+      },
+      {
+        "package": "WolfViews",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfViews",
+        "state": {
+          "branch": null,
+          "revision": "a3eca8a9f9515c91d6547dce1bd41c58c51c62b3",
+          "version": "5.0.1"
+        }
+      },
+      {
+        "package": "WolfWith",
+        "repositoryURL": "https://github.com/wolfmcnally/WolfWith",
+        "state": {
+          "branch": null,
+          "revision": "d5aa204302d8250f533221a6bc4c5a4250f9d491",
+          "version": "2.0.3"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

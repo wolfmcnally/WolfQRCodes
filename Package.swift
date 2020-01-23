@@ -13,7 +13,7 @@ let package = Package(
         .library(
             name: "WolfQRCodes",
             type: .dynamic,
-            targets: ["WolfQRViews"]),
+            targets: ["WolfQRCodes"]),
     ],
     dependencies: [
         .package(url: "https://github.com/wolfmcnally/WolfWith", from: "2.0.0"),

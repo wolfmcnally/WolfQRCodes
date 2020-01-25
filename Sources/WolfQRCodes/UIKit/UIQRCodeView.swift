@@ -11,16 +11,16 @@ import WolfImage
 import WolfViews
 import WolfPipe
 
-class UIQRCodeView: ImageView {
-    var data: Data! {
+public class UIQRCodeView: ImageView {
+    public var data: Data! {
         didSet { sync() }
     }
 
-    var color = UIColor.black {
+    public var color = UIColor.black {
         didSet { sync() }
     }
 
-    override func setup() {
+    override public func setup() {
         super.setup()
         layer.magnificationFilter = .nearest
     }

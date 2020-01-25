@@ -14,44 +14,45 @@ import WolfAutolayout
 import WolfStrings
 import WolfNesting
 import WolfConcurrency
+import WolfViewControllers
 import SwiftUI
 import WolfSwiftUI
 
-enum CaptureAction {
+public enum QRCodeCaptureAction {
     case dismiss
     case `continue`
     case displayCount(Int, Bool)
 }
 
-class UIQRCodeCaptureViewController: AppViewController {
-    var onCaptureData: ((Data) -> CaptureAction)?
-    var onMock: (() -> Data)?
+public class UIQRCodeCaptureViewController: PackageViewController {
+    public var onCaptureData: ((Data) -> QRCodeCaptureAction)?
+    public var onMock: (() -> Data)?
 
-    private lazy var titleBackground = View() • { (🍒: WolfViews.View) in
-        🍒.backgroundColor = .transparentDarkBackground
-        🍒.isUserInteractionEnabled = false
+    public var messageOverlayImage: UIImage? {
+        get { qrCodeCaptureView.messageOverlayImage }
+        set { qrCodeCaptureView.messageOverlayImage = newValue }
     }
 
-    private lazy var titleLabel = Label() • { (🍒: Label) in
-        _ = 🍒 |> resistVerticalCompression
-        🍒.numberOfLines = 0
-        🍒.textAlignment = .center
+    public var messageOverlayGlowImage: UIImage? {
+        get { qrCodeCaptureView.messageOverlayGlowImage }
+        set { qrCodeCaptureView.messageOverlayGlowImage = newValue }
     }
 
     private lazy var contentArea = View()
 
-    init(title: String) {
+    public init(title: String) {
         super.init(nibName: nil, bundle: nil)
-        titleLabel.attributedText = title§ |> sectionStyle
+        navigationItem.title = title
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func setup() {
+    override public func setup() {
         super.setup()
         hidesBottomBarWhenPushed = true
+        isModal = true
     }
 
     lazy var reticleViewController = SwiftUIHostingController(self) { Reticle() }
@@ -59,7 +60,7 @@ class UIQRCodeCaptureViewController: AppViewController {
 
     private lazy var qrCodeCaptureView = UIQRCodeCaptureView()
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         qrCodeCaptureView.onReceivedCode = { [unowned self] data in
@@ -73,43 +74,24 @@ class UIQRCodeCaptureViewController: AppViewController {
         }
     }
 
-    override func build() {
+    override public func build() {
         super.build()
 
         dismissButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel)
 
+        view.backgroundColor = .darkGray
+
         view => [
             qrCodeCaptureView,
-            titleBackground => [
-                titleLabel
-            ],
             contentArea => [
                 reticleView
             ]
         ]
 
         qrCodeCaptureView.constrainFrameToFrame()
-
-        let titleMargin: CGFloat = 15
-
-        Constraints(
-            titleBackground.leadingAnchor == view.leadingAnchor,
-            titleBackground.trailingAnchor == view.trailingAnchor,
-            titleBackground.topAnchor == view.safeAreaLayoutGuide.topAnchor,
-            titleBackground.bottomAnchor == titleLabel.bottomAnchor + titleMargin,
-
-            titleLabel.leadingAnchor == titleBackground.leadingAnchor + titleMargin,
-            titleLabel.trailingAnchor == titleBackground.trailingAnchor - titleMargin,
-            titleLabel.topAnchor == titleBackground.topAnchor + titleMargin,
-            titleLabel.bottomAnchor == titleBackground.bottomAnchor - titleMargin,
-
-            contentArea.topAnchor == titleBackground.bottomAnchor,
-            contentArea.bottomAnchor == view.safeAreaLayoutGuide.bottomAnchor,
-            contentArea.leadingAnchor == view.safeAreaLayoutGuide.leadingAnchor,
-            contentArea.trailingAnchor == view.safeAreaLayoutGuide.trailingAnchor
-        )
-
+        contentArea.constrainFrameToSafeArea()
         reticleView.constrainCenterToCenter()
+
         Constraints(
             reticleView.heightAnchor == contentArea.heightAnchor * 0.7 =&= .defaultHigh,
             reticleView.widthAnchor == contentArea.widthAnchor * 0.7 =&= .defaultHigh,
@@ -117,12 +99,12 @@ class UIQRCodeCaptureViewController: AppViewController {
         )
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         qrCodeCaptureView.startVideoCapture()
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
+    override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         qrCodeCaptureView.stopVideoCapture()
     }
@@ -141,13 +123,5 @@ class UIQRCodeCaptureViewController: AppViewController {
                 }
             }
         }
-    }
-
-    override func dismiss() {
-        navigationController?.popViewController(animated: true)
-    }
-
-    @IBAction func cancelAction(_ sender: Any) {
-        dismiss()
     }
 }

@@ -14,9 +14,10 @@ import WolfWith
 import WolfStrings
 import WolfNesting
 import WolfConcurrency
+import WolfViewControllers
 
-class UIQRCodeViewController: AppViewController {
-    init(data: Data, caption: String = "", title: String = "") {
+public class UIQRCodeViewController: PackageViewController {
+    public init(data: Data, caption: String = "", title: String = "") {
         super.init(nibName: nil, bundle: nil)
         self.data = data
         self.caption = caption
@@ -25,13 +26,14 @@ class UIQRCodeViewController: AppViewController {
         sync()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    override func setup() {
+    override public func setup() {
         super.setup()
         hidesBottomBarWhenPushed = true
+        isModal = true
     }
 
     private lazy var titleLabel = Label() |> textAlignment(.center) |> numberOfLines(0)
@@ -55,7 +57,7 @@ class UIQRCodeViewController: AppViewController {
 
     private lazy var stackViewContainer = encloseCenteredVertically <| stackView
 
-    override func build() {
+    override public func build() {
         super.build()
 
         dismissButtonItem = UIBarButtonItem(barButtonSystemItem: .done)
@@ -74,20 +76,20 @@ class UIQRCodeViewController: AppViewController {
         )
     }
 
-    var data: Data! {
+    public var data: Data! {
         didSet { syncData() }
     }
 
-    var caption: String! {
+    public var caption: String! {
         didSet { syncCaption() }
     }
 
-    var color: UIColor! {
+    public var color: UIColor! {
         didSet { syncColor() }
     }
 
-    var action: Block?
-    var actionTitle: String? {
+    public var action: Block?
+    public var actionTitle: String? {
         didSet { syncActionTitle() }
     }
 
@@ -119,7 +121,7 @@ class UIQRCodeViewController: AppViewController {
         action?()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.backgroundColor = .white
     }

@@ -11,25 +11,22 @@
 import SwiftUI
 import WolfPipe
 import WolfFoundation
+import WolfSwiftUI
 
-#if DEBUG
-import WolfLorem
-#endif
-
-struct DisplayQRCode: View {
+public struct DisplayQRCode: View {
     let data: Data
     let caption: String?
     let title: String
-    @Binding var isActive: Bool
+    @Binding var isPresented: Bool
 
-    init(data: Data, caption: String? = nil, title: String = "QR Code", isActive: Binding<Bool>) {
+    public init(data: Data, caption: String? = nil, title: String, isPresented: Binding<Bool>) {
         self.data = data
         self.caption = caption
         self.title = title
-        self._isActive = isActive
+        self._isPresented = isPresented
     }
 
-    var body: some View {
+    public var body: some View {
         VStack {
             Spacer()
             QRCode(data: data)
@@ -41,10 +38,10 @@ struct DisplayQRCode: View {
         .padding()
         .background(Color.white)
         .lightMode()
-        .navigationBarItems(leading: BackButton() {
-            self.isActive = false
+        .navigationBarTitle(title)
+        .navigationBarItems(leading: DoneButton() {
+            self.isPresented = false
         })
-            .navigationBarTitle(title)
     }
 }
 
@@ -52,7 +49,7 @@ struct DisplayQRCode: View {
 struct DisplayQRCode_Previews: PreviewProvider {
     struct Preview: View {
         var body: some View {
-            DisplayQRCode(data: "Hello" |> toUTF8, caption: Lorem.sentence(), title: Lorem.shortTitle(), isActive: .constant(true))
+            DisplayQRCode(data: "Hello" |> toUTF8, caption: randomWords(7), title: randomWords(3), isPresented: .constant(true))
         }
     }
 
@@ -64,6 +61,18 @@ struct DisplayQRCode_Previews: PreviewProvider {
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
+
+func randomWord() -> String {
+    let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    let count = (2...10).randomElement()!
+    let letters = (0..<count).map { _ in alphabet.randomElement()! }
+    return String(letters)
+}
+
+func randomWords(_ count: Int) -> String {
+    return (0..<count).map({ _ in randomWord() }).joined(separator: " ")
+}
+
 #endif
 
 #endif

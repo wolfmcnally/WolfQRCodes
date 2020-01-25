@@ -13,16 +13,16 @@ import WolfImage
 import WolfFoundation
 import WolfPipe
 
-struct QRCode: View {
+public struct QRCode: View {
     let data: Data
     let color: Color
 
-    init(data: Data, color: Color = .white) {
+    public init(data: Data, color: Color = .white) {
         self.data = data
         self.color = color
     }
 
-    var body: some View {
+    public var body: some View {
         Image(uiImage: QRCodeGeneratorFilter(data: data, correctionLevel: .low) |> (orientation: .up, scale: 1))
             .interpolation(.none)
             .resizable()

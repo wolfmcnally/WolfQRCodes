@@ -11,15 +11,31 @@
 import SwiftUI
 import WolfWith
 
-struct CaptureQRCode: UIViewControllerRepresentable {
-    typealias MockBlock = () -> Data
-    typealias CaptureBlock = (Data) -> CaptureAction
+public typealias QRCodeMockBlock = () -> Data
+public typealias QRCodeCaptureBlock = (Data) -> QRCodeCaptureAction
 
+public struct CaptureQRCode: View {
     let title: String
-    let onMock: MockBlock?
-    let onCaptureData: CaptureBlock?
+    let onMock: QRCodeMockBlock?
+    let onCaptureData: QRCodeCaptureBlock?
 
-    init(title: String, onMock: MockBlock? = nil, onCaptureData: CaptureBlock? = nil) {
+    public init(title: String, onMock: QRCodeMockBlock? = nil, onCaptureData: QRCodeCaptureBlock? = nil) {
+        self.title = title
+        self.onMock = onMock
+        self.onCaptureData = onCaptureData
+    }
+
+    public var body: some View {
+        UIQRCodeCapture(title: title, onMock: onMock, onCaptureData: onCaptureData)
+    }
+}
+
+struct UIQRCodeCapture: UIViewControllerRepresentable {
+    let title: String
+    let onMock: QRCodeMockBlock?
+    let onCaptureData: QRCodeCaptureBlock?
+
+    init(title: String, onMock: QRCodeMockBlock? = nil, onCaptureData: QRCodeCaptureBlock? = nil) {
         self.title = title
         self.onMock = onMock
         self.onCaptureData = onCaptureData
@@ -35,13 +51,5 @@ struct CaptureQRCode: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UIQRCodeCaptureViewController, context: Context) {
     }
 }
-
-//#if DEBUG
-//struct CaptureQRCode_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CaptureQRCode()
-//    }
-//}
-//#endif
 
 #endif

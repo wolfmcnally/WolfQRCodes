@@ -11,7 +11,7 @@ import WolfFoundation
 import WolfPipe
 import WolfImage
 
-func makeQRCode(_ data: String, color: UIColor = .black) -> UIImage {
+public func makeQRCode(_ data: String, color: UIColor = .black) -> UIImage {
     let data = data |> toUTF8
     let image = QRCodeGeneratorFilter(data: data, correctionLevel: .high).outputImage()
     let maskImage = UIImage(cgImage: image.newMask())

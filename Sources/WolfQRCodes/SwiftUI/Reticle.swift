@@ -6,16 +6,18 @@
 //  Copyright © 2020 Blockchain Commons. All rights reserved.
 //
 
+#if canImport(SwiftUI)
+
 import SwiftUI
 
-struct Reticle: View {
+public struct Reticle: View {
     let color: Color
 
-    init(color: Color = Color.primary.opacity(0.3)) {
+    public init(color: Color = Color.primary.opacity(0.3)) {
         self.color = color
     }
 
-    var body: some View {
+    public var body: some View {
         GeometryReader { proxy in
             return ReticleShape()
                 .stroke(self.color, lineWidth: ReticleShape.lineWidth(for: proxy.size.width))
@@ -24,19 +26,21 @@ struct Reticle: View {
     }
 }
 
+#if DEBUG
 struct Reticle_Previews: PreviewProvider {
     static var previews: some View {
         Reticle()
             .frame(width: 200)
     }
 }
+#endif
 
-struct ReticleShape: Shape {
+public struct ReticleShape: Shape {
     static func lineWidth(for width: CGFloat) -> CGFloat {
         return width * 0.1
     }
 
-    func path(in rect: CGRect) -> Path {
+    public func path(in rect: CGRect) -> Path {
         func makeCorner() -> Path {
             let space = rect.width * 0.15
             let cornerRadius = rect.width * 0.15
@@ -77,3 +81,5 @@ struct ReticleShape: Shape {
         return makeAllCorners()
     }
 }
+
+#endif

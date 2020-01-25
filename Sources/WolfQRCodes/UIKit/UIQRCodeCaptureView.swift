@@ -16,6 +16,7 @@ import WolfNesting
 import WolfFoundation
 import WolfApp
 import WolfAutolayout
+import WolfSwiftUI
 
 public class UIQRCodeCaptureView: View {
     public var onMockButtonPressed: Block?
@@ -27,20 +28,29 @@ public class UIQRCodeCaptureView: View {
         didSet { syncCount() }
     }
 
-    private lazy var alertView = AlertView() • { (🍒: AlertView) in
-        🍒.image = .splitBackup
+    private lazy var messageOverlayView = MessageOverlayView() • { (🍒: MessageOverlayView) in
         🍒.size = CGSize(width: 140, height: 140)
         🍒.font = .boldSystemFont(ofSize: 60)
         🍒.highlightMessageChange = true
         🍒.hide()
     }
 
+    public var messageOverlayImage: UIImage? {
+        get { messageOverlayView.image }
+        set { messageOverlayView.image = newValue }
+    }
+
+    public var messageOverlayGlowImage: UIImage? {
+        get { messageOverlayView.glowImage }
+        set { messageOverlayView.glowImage = newValue }
+    }
+
     private func syncCount() {
         if let count = count {
-            alertView.message = String(count)
-            alertView.show(animated: true)
+            messageOverlayView.message = String(count)
+            messageOverlayView.show(animated: true)
         } else {
-            alertView.hide(animated: true)
+            messageOverlayView.hide(animated: true)
         }
     }
 
@@ -102,9 +112,9 @@ public class UIQRCodeCaptureView: View {
         backgroundColor = UIColor(white: 0.5, alpha: 0.1)
 
         self => [
-            alertView
+            messageOverlayView
         ]
-        alertView.constrainCenterToCenter()
+        messageOverlayView.constrainCenterToCenter()
     }
 
     public func startVideoCapture() {

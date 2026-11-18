@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:6.1
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -16,15 +16,17 @@ let package = Package(
             targets: ["WolfQRCodes"]),
     ],
     dependencies: [
+        // Enforce a patched SwiftNIO version for transitive dependencies.
+        .package(url: "https://github.com/apple/swift-nio.git", from: "2.100.0"),
         .package(url: "https://github.com/wolfmcnally/WolfWith", from: "2.0.0"),
         .package(url: "https://github.com/wolfmcnally/WolfPipe", from: "2.0.0"),
         .package(url: "https://github.com/wolfmcnally/WolfFoundation", from: "5.0.0"),
         .package(url: "https://github.com/wolfmcnally/WolfImage", from: "4.0.0"),
-        .package(url: "https://github.com/wolfmcnally/WolfViews", from: "5.0.0"),
+        .package(url: "https://github.com/wolfmcnally/WolfViews", from: "5.2.1"),
         .package(url: "https://github.com/wolfmcnally/WolfViewControllers", from: "5.0.0"),
         .package(url: "https://github.com/wolfmcnally/WolfConcurrency", from: "3.0.0"),
         .package(url: "https://github.com/wolfmcnally/WolfNesting", from: "2.0.0"),
-        .package(url: "https://github.com/wolfmcnally/WolfApp", from: "2.0.0"),
+        .package(url: "https://github.com/wolfmcnally/WolfApp", from: "2.2.2"),
         .package(url: "https://github.com/wolfmcnally/WolfAutolayout", from: "2.0.0"),
         .package(url: "https://github.com/wolfmcnally/WolfSwiftUI", from: "1.0.0"),
         .package(url: "https://github.com/wolfmcnally/WolfGeometry", from: "4.0.0"),
@@ -54,5 +56,6 @@ let package = Package(
                 "WolfAnimation",
                 "WolfColor",
         ])
-    ]
+    ],
+    swiftLanguageModes: [.v5]
 )

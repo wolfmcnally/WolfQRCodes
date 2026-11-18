@@ -12,12 +12,12 @@ import WolfAutolayout
 import WolfViews
 import WolfNesting
 
-func normalStyle(_ string: AttributedString?) -> AttributedString? {
+func normalStyle(_ string: WolfStrings.AttributedString?) -> WolfStrings.AttributedString? {
     guard let string = string else { return nil }
     return string |> withForegroundColor(.normalText)
 }
 
-func appFont(_ string: AttributedString?) -> AttributedString? {
+func appFont(_ string: WolfStrings.AttributedString?) -> WolfStrings.AttributedString? {
     guard let string = string else { return nil }
     let fontFace = UIFont.appFont.fontName
     let updatedDesc = string.font.fontDescriptor.withFace(fontFace)
@@ -26,7 +26,7 @@ func appFont(_ string: AttributedString?) -> AttributedString? {
     return string
 }
 
-func sectionStyle(_ string: AttributedString?) -> AttributedString? {
+func sectionStyle(_ string: WolfStrings.AttributedString?) -> WolfStrings.AttributedString? {
     return string |> appFont |> withBold |> withPointSize(UIFont.nameFieldFontSize) |> withForegroundColor(.titleText)
 }
 
